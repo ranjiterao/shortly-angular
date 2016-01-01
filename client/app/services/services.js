@@ -1,6 +1,6 @@
 angular.module('shortly.services', [])
 
-.factory('Links', function($http){
+.factory('Links', function ($http) {
   return {
     // get : function(path){
     //   path = path || ""
@@ -10,14 +10,16 @@ angular.module('shortly.services', [])
     //   });
     // },
 
-    getAll : function(){
+    getAll : function () {
       return $http({
         method: "GET",
         url: '/api/links'
-      }).then(function(obj){return obj.data;});
+      }).then(function (obj) {
+        return obj.data;
+      });
     },
 
-    addOne: function(objURL){
+    addOne: function (objURL) {
       return $http({
         method: "POST",
         url: '/api/links',
