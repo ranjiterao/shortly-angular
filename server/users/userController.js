@@ -2,8 +2,10 @@ var User = require('./userModel.js');
     Q = require('q');
     jwt = require('jwt-simple');
 
-var findUser = Q.denodify(User.findOne, User);
-var createUser = Q.denodify(User.create, User);
+var findUser = Q.nbind(User.findOne, User);
+var createUser = Q.nbind(User.create, User);
+
+
 
 module.exports = {
   signin: function (req, res, next) {
