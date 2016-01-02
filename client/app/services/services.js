@@ -20,6 +20,7 @@ angular.module('shortly.services', [])
     },
 
     addOne: function (objURL) {
+
       return $http({
         method: "POST",
         url: '/api/links',

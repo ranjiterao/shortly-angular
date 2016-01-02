@@ -1,4 +1,9 @@
-<div id='container'>
+<div id='container' ng-init='isAuth() ; displayLinks()'>
   <!-- Your html here -->
-  <a ng-href = "#/shorten">Shorten</a>
+  <div>
+    <ul>
+      <li ng-repeat ="link in data.links">{{link.title}}</li>
+    </ul>
+  </div>
+  <a href = "#/shorten">Shorten</a>
 </div>
