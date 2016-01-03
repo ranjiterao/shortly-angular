@@ -4,6 +4,9 @@
 angular.module('shortly.auth', [])
 
 .controller('AuthController', function ($scope, $window, $location, Auth) {
+  var validUsername = '^[a-z0-9_-]{3,15}$';
+  var validPassword = '^.{4,8}$';
+
   $scope.signin = function () {
     Auth.signin($scope.user)
       .then(function (token) {
@@ -25,4 +28,31 @@ angular.module('shortly.auth', [])
         console.error(error);
       });
   };
+
+  var isValidPattern = function (string, regex) {
+    return string.match(regex);
+  };
+
+  $scope.usernameMessage = function () {
+    if($scope.user && $scope.user.username){
+      if (!isValidPattern($scope.user.username, validUsername)) {
+        return "Not a valid Username";
+      } else {
+        return "you're good";
+      }
+    }
+  };
+
+  $scope.passwordMessage = function(){
+    if($scope.user && $scope.user.password){
+      console.log($scope.user.password)
+      if (!isValidPattern($scope.user.password, validPassword)) {
+        return "Not a valid Password";
+      } else {
+        return "you're good";
+      }
+    }
+  };
+
+
 });

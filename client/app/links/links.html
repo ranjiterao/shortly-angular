@@ -1,8 +1,8 @@
-<div id='container' ng-init='isAuth() ; displayLinks()'>
+<div id='container'>
   <!-- Your html here -->
   <div>
     <ul>
-      <li ng-repeat ="link in data.links">{{link.title}}</li>
+      <li ng-repeat ="link in data.links track by $index" ng-click = "goToLink($index)">{{link.title}} {{link.visits}}</li>
     </ul>
   </div>
   <a href = "#/shorten">Shorten</a>

@@ -1,7 +1,7 @@
 angular.module('shortly.links', [])
 
 
-.controller('LinksController', function ($scope, $location, Links, Auth) {
+.controller('LinksController', function ($scope, $location, $window, Links, Auth) {
   // Your code here
   $scope.data = {};
   $scope.user = 'b';
@@ -12,15 +12,12 @@ angular.module('shortly.links', [])
     $scope.data.links = links;
   });
 
-  $scope.displayLinks = function () {
-    console.log($scope.data.links, "links");
-  };
+  // $scope.displayLinks = function () {
+  //   console.log($scope.data.links, "links");
+  // };
 
-  $scope.isAuth = function () {
-    if (Auth.isAuth()) {
-      $location.path('/links');
-    } else {
-      $location.path('/signin');
-    }
+  $scope.goToLink = function($index){
+    var urlObj = $scope.data.links[$index];
+    $window.location.href = urlObj.code;
   };
 });
