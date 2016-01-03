@@ -34,7 +34,7 @@ angular.module('shortly.auth', [])
   };
 
   $scope.usernameMessage = function () {
-    if($scope.user && $scope.user.username){
+    if ($scope.user && $scope.user.username) {
       if (!isValidPattern($scope.user.username, validUsername)) {
         return "Not a valid Username";
       } else {
@@ -43,9 +43,8 @@ angular.module('shortly.auth', [])
     }
   };
 
-  $scope.passwordMessage = function(){
-    if($scope.user && $scope.user.password){
-      console.log($scope.user.password)
+  $scope.passwordMessage = function () {
+    if ($scope.user && $scope.user.password) {
       if (!isValidPattern($scope.user.password, validPassword)) {
         return "Not a valid Password";
       } else {

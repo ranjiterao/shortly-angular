@@ -1,5 +1,6 @@
 <div id='container'>
   <!-- Your html here -->
+  <input ng-model = 'filter' ng-change = 'console.log("hi")'></input>
   <div>
     <ul>
       <li ng-repeat ="link in data.links track by $index" ng-click = "goToLink($index)">{{link.title}} {{link.visits}}</li>

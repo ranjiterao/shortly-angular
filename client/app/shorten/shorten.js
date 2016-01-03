@@ -6,16 +6,14 @@ angular.module('shortly.shorten', [])
   // $scope.link = {};
   $scope.addLink = function () {
     //validate link
-    if(isValidUrl($scope.url)){
+    if (isValidUrl($scope.url)) {
 
-      Links.addOne({url: $scope.url}).then(function(){
-        Links.getAll().then(function(promise){
-          $location.path("/links");              
+      Links.addOne({url: $scope.url}).then(function () {
+        Links.getAll().then(function (promise) {
+          $location.path("/links");
         });
       });
       $scope.url = '';
-    } else {
-      console.log("NOT VALID BITCH!!1!!1!one")
     }
   };
 
@@ -23,7 +21,7 @@ angular.module('shortly.shorten', [])
     return url.match(rValidUrl);
   };
 
-  $scope.urlMessage = function(){
+  $scope.urlMessage = function () {
     if (!isValidUrl($scope.url)) {
       return "Is not a valid URL";
     }

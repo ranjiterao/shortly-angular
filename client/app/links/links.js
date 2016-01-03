@@ -9,14 +9,17 @@ angular.module('shortly.links', [])
   $scope.testLinks = ["http://www.yahoo.com", "banana"];
 
   Links.getAll().then(function (links) {
-    $scope.data.links = links;
+    $scope.data.links = links.sort(function (a, b) {
+      return b.visits - a.visits;
+    });
+    // if ($scope.filter) {
+    //   links.filter(function (link) {
+    //     return link.title.includes($scope.filter);
+    //   });
+    // }
   });
 
-  // $scope.displayLinks = function () {
-  //   console.log($scope.data.links, "links");
-  // };
-
-  $scope.goToLink = function($index){
+  $scope.goToLink = function ($index) {
     var urlObj = $scope.data.links[$index];
     $window.location.href = urlObj.code;
   };
